@@ -3,10 +3,10 @@ echo $formatted_time
 
 
 deepspeed --include localhost:0,1,2,3 finetune.py \
-    --model_name_or_path <your_model_name_or_path> \
-    --output_dir output/AdvertiseGenSFT/$formatted_time/ \
-    --train_data_path data/AdvertiseGenChatML/train.json \
-    --eval_data_path data/AdvertiseGenChatML/dev.json \
+    --model_name_or_path openbmb/MiniCPM-2B-dpo-fp16 \
+    --output_dir output/$formatted_time/ \
+    --train_data_path data/train.json \
+    --eval_data_path data/val.json \
     --learning_rate 1e-3 --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 4 --bf16 \
     --gradient_accumulation_steps 8 --warmup_steps 100 \
